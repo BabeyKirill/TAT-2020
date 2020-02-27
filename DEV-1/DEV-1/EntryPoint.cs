@@ -9,22 +9,24 @@ namespace DEV_1
     {
         static void Main(string[] args)
         {
-            string str;
+            string theString;
             Console.WriteLine("Enter the string: ");
 
             while (true)
             {
-                str = Console.ReadLine();
-                if (str == string.Empty)
+                theString = Console.ReadLine();
+
+                if (theString.Length <= 1)
                 {
-                    Console.WriteLine("The string should not be empty. Try again: ");
+                    Console.WriteLine("The minimum line length is 2 characters. Try again: ");
                     continue;
                 }
+
                 break;
             }
 
             StringAnalyzer analyzer = new StringAnalyzer();
-            Console.WriteLine(analyzer.ToCountSameCharacters(str));
+            Console.WriteLine(analyzer.ToCountSameCharacters(theString));
         }
     }
 }

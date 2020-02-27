@@ -6,23 +6,20 @@
     class StringAnalyzer
     {
         /// <summary>
-        /// Returns the maximum number of repeated consecutive characters in a string
+        /// Returns the maximum number of repeated consecutive characters in the string
         /// </summary>
-        /// <param name="str">considered string</param>
-        public int ToCountSameCharacters(string str)
+        /// <param name="theString">considered string</param>
+        public int ToCountSameCharacters(string theString)
         {
-            if (str.Length == 0)
-                return 0;
-
-            if (str.Length == 1)
-                return 1;
+            if (theString.Length <= 1)
+                throw new System.ArgumentException("parameter 'theString' length must not be less than two characters");
 
             int count = 1;
-            int maxCount = 1;
+            int maxCount = 0;
 
-            for (int i = 1; i < str.Length; i++)
+            for (int i = 1; i < theString.Length; i++)
             {
-                if (str[i-1] == str[i])
+                if (theString[i - 1] == theString[i])
                 {
                     count++;
 
