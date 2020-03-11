@@ -9,14 +9,14 @@ namespace DEV_1
     {
         static void Main(string[] args)
         {
-            string theString;
+            string inputString;
             Console.WriteLine("Enter the string: ");
 
             while (true)
             {
-                theString = Console.ReadLine();
+                inputString = Console.ReadLine();
 
-                if (theString.Length <= 1)
+                if (inputString.Length <= 1)
                 {
                     Console.WriteLine("The minimum line length is 2 characters. Try again: ");
                     continue;
@@ -26,7 +26,7 @@ namespace DEV_1
             }
 
             StringAnalyzer analyzer = new StringAnalyzer();
-            Console.WriteLine(analyzer.ToCountSameCharacters(theString));
+            Console.WriteLine(analyzer.ToCountSameCharacters(inputString));
         }
     }
 }

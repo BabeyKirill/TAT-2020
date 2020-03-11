@@ -8,18 +8,18 @@
         /// <summary>
         /// Returns the maximum number of repeated consecutive characters in the string
         /// </summary>
-        /// <param name="theString">considered string</param>
-        public int ToCountSameCharacters(string theString)
+        /// <param name="inputString">considered string</param>
+        public int ToCountSameCharacters(string inputString)
         {
-            if (theString.Length <= 1)
-                throw new System.ArgumentException("parameter 'theString' length must not be less than two characters");
+            if (inputString.Length <= 1)
+                throw new System.ArgumentException("parameter 'inputString' length must not be less than two characters");
 
             int count = 1;
             int maxCount = 0;
 
-            for (int i = 1; i < theString.Length; i++)
+            for (int i = 1; i < inputString.Length; i++)
             {
-                if (theString[i - 1] == theString[i])
+                if (inputString[i - 1] == inputString[i])
                 {
                     count++;
 
