@@ -3,16 +3,16 @@
     /// <summary>
     /// A class that contains methods for string analysis
     /// </summary>
-    class StringAnalyzer
+    public class StringAnalyzer
     {
         /// <summary>
         /// Returns the maximum number of repeated consecutive characters in the string
         /// </summary>
         /// <param name="inputString">considered string</param>
-        public int ToCountSameCharacters(string inputString)
+        public static int ToCountSameCharacters(string inputString)
         {
-            if (inputString.Length <= 1)
-                throw new System.ArgumentException("parameter 'inputString' length must not be less than two characters");
+            if (inputString == null || inputString.Length <= 1)
+                return 0;
 
             int count = 1;
             int maxCount = 0;
