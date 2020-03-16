@@ -1,13 +1,12 @@
 ﻿using NUnit.Framework;
 using DEV_1;
+using System;
 
 namespace Tests
 {
     [TestFixture]
     public class StringAnalyzerTests
     {
-        [TestCase(0, null)]
-        [TestCase(0, "")]
         [TestCase(1, "a")]
         [TestCase(1, "aaa")]
         [TestCase(6, "abcabc")]
@@ -18,9 +17,16 @@ namespace Tests
         [TestCase(4, "ab12223c")]
         [TestCase(5, "abc~~#+-_")]
         [TestCase(4, "abc  de")]
-        public void СountSequentiallyDifferent_Test(int correctAnswer, string inputString)
+        public void SequentiallyDifferentСount_Test(int correctAnswer, string inputString)
         {
-            Assert.AreEqual(correctAnswer, StringAnalyzer.СountSequentiallyDifferent(inputString));
+            Assert.AreEqual(correctAnswer, StringAnalyzer.SequentiallyDifferentСount(inputString));
+        }
+
+        [TestCase("")]
+        [TestCase(null)]
+        public void SequentiallyDifferentСount_NullTest(string inputString)
+        {
+            Assert.Throws<NullReferenceException>(() => StringAnalyzer.SequentiallyDifferentСount(inputString));
         }
     }
 }

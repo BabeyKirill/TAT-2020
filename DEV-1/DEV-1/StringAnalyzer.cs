@@ -1,4 +1,6 @@
-﻿namespace DEV_1
+﻿using System;
+
+namespace DEV_1
 {
     /// <summary>
     /// A class that contains methods for string analysis
@@ -9,10 +11,12 @@
         /// Returns the maximum number of Sequentially different characters in the string
         /// </summary>
         /// <param name="inputString">considered string</param>
-        public static int СountSequentiallyDifferent(string inputString)
+        public static int SequentiallyDifferentСount(string inputString)
         {
-            if (inputString == null || inputString == "")
-                return 0;
+            if (inputString == null || inputString == string.Empty)
+            {
+                throw new NullReferenceException();
+            }
 
             int count = 1;
             int maxCount = 1;
@@ -24,10 +28,14 @@
                     count++;
 
                     if (maxCount < count)
+                    {
                         maxCount = count;
+                    }
                 }
                 else
+                {
                     count = 1;
+                }
             }
 
             return maxCount;
