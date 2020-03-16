@@ -6,20 +6,20 @@
     public class StringAnalyzer
     {
         /// <summary>
-        /// Returns the maximum number of repeated consecutive characters in the string
+        /// Returns the maximum number of Sequentially different characters in the string
         /// </summary>
         /// <param name="inputString">considered string</param>
-        public static int ToCountSameCharacters(string inputString)
+        public static int СountSequentiallyDifferent(string inputString)
         {
-            if (inputString == null || inputString.Length <= 1)
+            if (inputString == null || inputString == "")
                 return 0;
 
             int count = 1;
-            int maxCount = 0;
+            int maxCount = 1;
 
             for (int i = 1; i < inputString.Length; i++)
             {
-                if (inputString[i - 1] == inputString[i])
+                if (inputString[i - 1] != inputString[i])
                 {
                     count++;
 
