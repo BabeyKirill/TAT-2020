@@ -49,6 +49,7 @@
     <Compile Include="Randomizer.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="TaskEventArgs.cs" />
+    <Compile Include="TaskResults.cs" />
     <Compile Include="Teacher.cs" />
   </ItemGroup>
   <ItemGroup>

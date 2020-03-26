@@ -7,21 +7,21 @@ namespace CW_2
     {
         public List<Student> Group { get; private set; }
         public List<Student> ListOfReadyStudents { get; private set; }
-        public List<string> TaskResults { get; private set; }
+        public List<TaskResults> TaskResults { get; private set; }
 
         public Teacher()
         {
             Group = new List<Student>();
             ListOfReadyStudents = new List<Student>();
-            TaskResults = new List<string>();
+            TaskResults = new List<TaskResults>();
         }
 
-        public void AddStudentToGroup(Student student)
+        public void AddStudentInGroup(Student student)
         {
             if (Group.Contains(student) == false)
             {
                 Group.Add(student);
-                student.studentDidTheTask += AcceptTheWork;
+                student.StudentDidTheTask += AcceptTheWork;
             }
         }
 
@@ -29,26 +29,54 @@ namespace CW_2
         {
             if (ListOfReadyStudents.Contains((Student)sender) == false)
             {
+                int grade = ToGradeTheAnswer(e.Answer);
+
                 ListOfReadyStudents.Add((Student)sender);
-                TaskResults.Add(e.TaskResult);
+                TaskResults.Add(new TaskResults(((Student)sender).Name, ((Student)sender).Surname, e.Answer, grade));
 
-                foreach (Student student in Group)
+                if (Group.Count == TaskResults.Count)
                 {
-                    if (ListOfReadyStudents.Contains(student) == false)
-                    {
-                        return;
-                    }
+                    PrintAllResults();
                 }
-
-                ShowAllResults();
             }          
         }
 
-        public void ShowAllResults()
+        public int ToGradeTheAnswer(string answer)
         {
-            for (int i = 0; i < ListOfReadyStudents.Count; i++)
+            const int SizeOfAlphabet = 25;
+            const int CodeOfFirstLetter = 96;
+            const int MaxGrade = 10;
+            double grade = 0;
+
+            foreach (char c in answer)
             {
-                Console.WriteLine($"{ListOfReadyStudents[i].Name} {ListOfReadyStudents[i].Surname}: {TaskResults[i]}");
+                grade += (int)c - CodeOfFirstLetter;
+            }
+
+            grade = grade / SizeOfAlphabet;
+
+            for (int i = 0; i <= MaxGrade; i++)
+            {
+                if(grade >= i && grade <= i + 0.5)
+                {
+                    grade = i;
+                    break;
+                }
+                if (grade >= i + 0.5 && grade <= i)
+                {
+                    grade = i + 1;
+                    break;
+                }
+            }
+
+            return (int)grade;
+        }
+
+        public void PrintAllResults()
+        {
+            foreach (TaskResults result in TaskResults)
+            {
+                Console.WriteLine($"{result.Name} {result.Surname} Answer: {result.TaskAnswer}. Grade: {result.Grade}");
             }
         }
     }

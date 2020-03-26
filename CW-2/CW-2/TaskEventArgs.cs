@@ -2,11 +2,11 @@
 {
     class TaskEventArgs
     {
-        public string TaskResult { get; }
+        public string Answer { get; }
 
-        public TaskEventArgs(string taskResult)
+        public TaskEventArgs(string answer)
         {
-            this.TaskResult = taskResult;
+            this.Answer = answer;
         }
     }
 }

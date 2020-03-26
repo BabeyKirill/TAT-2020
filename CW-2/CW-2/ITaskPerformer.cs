@@ -2,6 +2,6 @@
 {
     interface ITaskPerformer
     {
-        string DoTask();
+        void DoTask();
     }
 }

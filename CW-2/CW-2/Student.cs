@@ -4,9 +4,9 @@ namespace CW_2
 {
     class Student : ITaskPerformer
     {
-        public delegate void StudentHandler(object obj, TaskEventArgs e);
-        public event StudentHandler studentDidTheTask;
-        
+        public delegate void EventHandler(object obj, TaskEventArgs e);
+        public event EventHandler StudentDidTheTask;
+
         public string Name { get; private set; }
         public string Surname { get; private set; }
 
@@ -16,20 +16,20 @@ namespace CW_2
             this.Surname = surname;
         }
 
-        public string DoTask()
+        public void DoTask()
         {
+            const int resultLength = 10;
+            const int lowerCaseAlphabetStart = 97;
+            const int lowerCaseAlphabetEnd = 122;
             StringBuilder result = new StringBuilder();
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < resultLength; i++)
             {
-                //97-123 it is lowercase English alphabet
-                char c = (char)Randomizer.rnd.Next(97, 123);
+                char c = (char)Randomizer.rnd.Next(lowerCaseAlphabetStart, lowerCaseAlphabetEnd + 1);
                 result.Append(c);
             }
 
-            studentDidTheTask?.Invoke(this, new TaskEventArgs(result.ToString()));
-            return result.ToString();
+            StudentDidTheTask?.Invoke(this, new TaskEventArgs(result.ToString()));
         }
-
     }
 }
