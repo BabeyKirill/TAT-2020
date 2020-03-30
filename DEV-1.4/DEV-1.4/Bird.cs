@@ -10,7 +10,7 @@ namespace DEV_1._4
         public const int MinSpeed = 0;
         public const int MaxSpeed = 20;
         public double Speed { get; private set; }
-       
+
         public Bird(Coordinates startPosition)
         {
             this.CurrentPosition = startPosition;
@@ -38,7 +38,7 @@ namespace DEV_1._4
         public DateTime GetFlyTime(Coordinates newPosition)
         {
             if (this.Speed != 0)
-            {               
+            {
                 double timeForTrip = CurrentPosition.GetDistance(newPosition) / this.Speed;
                 DateTime timeNow = DateTime.Now;
                 return timeNow.AddHours(timeForTrip);

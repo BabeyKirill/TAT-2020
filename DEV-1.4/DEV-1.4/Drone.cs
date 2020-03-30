@@ -7,9 +7,9 @@ namespace DEV_1._4
         //The drone's peculiarity is that it stops for 1 minute every 10 minutes
         // Measurement system in this class is kilometers, kilometers/hours and hours
         public Coordinates CurrentPosition { get; private set; }
-        public const double Speed = 15;
-        public const double StopPeriod = 1 / 6;
-        public const double StopTime = 1 / 60;
+        public const double Speed = 12;
+        public const double StopPeriod = 0.166666666;        // 10 minutes in hours
+        public const double StopTime = 0.016666666;         // 1 minute in hours
         public const double MaxDistance = 1000;
 
         public Drone(Coordinates startPosition)
@@ -35,6 +35,16 @@ namespace DEV_1._4
         /// </summary>
         public DateTime GetFlyTime(Coordinates newPosition)
         {
+            double timeForTrip = CaulculateTimeForTrip(newPosition);
+            DateTime timeNow = DateTime.Now;
+            return timeNow.AddHours(timeForTrip);
+        }
+
+        /// <summary>
+        /// calculates time for trip in hours
+        /// </summary>
+        public double CaulculateTimeForTrip(Coordinates newPosition)
+        {
             if (CurrentPosition.GetDistance(newPosition) > MaxDistance)
             {
                 throw new ArgumentOutOfRangeException();
@@ -44,8 +54,7 @@ namespace DEV_1._4
             double stopDistance = Speed * StopPeriod;
             int NumberOfStops = (int)(distance / stopDistance);
             double timeForTrip = distance / Speed + NumberOfStops * StopTime;
-            DateTime timeNow = DateTime.Now;
-            return timeNow.AddHours(timeForTrip);
+            return timeForTrip;
         }
     }
 }

@@ -36,6 +36,16 @@ namespace DEV_1._4
         /// </summary>
         public DateTime GetFlyTime(Coordinates newPosition)
         {
+            double timeForTrip = CaulculateTimeForTrip(newPosition);
+            DateTime timeNow = DateTime.Now;
+            return timeNow.AddHours(timeForTrip);
+        }
+
+        /// <summary>
+        /// calculates time for trip in hours
+        /// </summary>
+        public double CaulculateTimeForTrip(Coordinates newPosition)
+        {
             if (CurrentPosition.GetDistance(newPosition) < MinDistance)
             {
                 throw new ArgumentOutOfRangeException();
@@ -44,19 +54,17 @@ namespace DEV_1._4
             double distance = CurrentPosition.GetDistance(newPosition);
             double Speed = StartSpeed;
             int maxNumberOfAccelerations = (int)((MaxSpeed - StartSpeed) / Acceleration);
-            int numberOfAccelerations = Math.Min((int)(distance / AccelerationDistance), maxNumberOfAccelerations);
+            int numberOfAccelerations = Math.Min((int)(distance / AccelerationDistance) - 1, maxNumberOfAccelerations);
             double timeForTrip = 0;
 
-            for (int i = 0; i <= numberOfAccelerations; i++)
-            {
-                Speed = Speed + Acceleration;
+            for (int i = 1; i <= numberOfAccelerations; i++)
+            {              
                 timeForTrip = timeForTrip + AccelerationDistance / Speed;
+                Speed = Speed + Acceleration;
             }
-         
+
             distance = distance - numberOfAccelerations * AccelerationDistance;
-            timeForTrip = timeForTrip + distance / Speed;
-            DateTime timeNow = DateTime.Now;
-            return timeNow.AddHours(timeForTrip);
+            return timeForTrip + distance / Speed;
         }
     }
 }
