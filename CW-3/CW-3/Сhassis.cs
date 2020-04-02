@@ -56,7 +56,7 @@ namespace CW_3
             }
             private set
             {
-                if (value == null || value == string.Empty)
+                if (String.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException();
                 }

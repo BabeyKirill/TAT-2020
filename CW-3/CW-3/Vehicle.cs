@@ -18,7 +18,7 @@ namespace CW_3
             }
             set
             {
-                if (value == null || value == string.Empty)
+                if (String.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException();
                 }
@@ -45,7 +45,7 @@ namespace CW_3
             }
             set
             {
-                if (value == null || value == string.Empty)
+                if (String.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException();
                 }
