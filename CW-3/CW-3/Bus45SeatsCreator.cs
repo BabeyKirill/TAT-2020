@@ -1,8 +1,8 @@
 ﻿namespace CW_3
 {
-    class Bus45SeatsCreator : Creator
+    class Bus45SeatsCreator : ICreator
     {
-        public override Vehicle Create()
+        public Vehicle Create()
         { 
             Chassis chassis = new Chassis(6, 12000, "CH000003");
             Transmission transmission = new Transmission(TransmissionType.Automatical, 6, "Nutella");

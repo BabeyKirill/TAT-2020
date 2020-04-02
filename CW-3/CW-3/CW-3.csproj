@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7AAC09CA-207C-4AED-BB41-4CD23D5455BF}</ProjectGuid>
+    <ProjectGuid>{CB6C6C4B-DB22-48D9-A914-1CB709477BC1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CW3</RootNamespace>
-    <AssemblyName>CW3</AssemblyName>
+    <RootNamespace>CW_3</RootNamespace>
+    <AssemblyName>CW-3</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -48,7 +48,7 @@
     <Compile Include="Car.cs" />
     <Compile Include="CarAutoTransmissionPetrolCreator.cs" />
     <Compile Include="CarMechanicalTransmissionCreator.cs" />
-    <Compile Include="Creator.cs" />
+    <Compile Include="ICreator.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

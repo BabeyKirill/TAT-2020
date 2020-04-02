@@ -7,10 +7,10 @@ namespace CW_3
         static void Main(string[] args)
         {
             List<Vehicle> autopark = new List<Vehicle>();
-            Creator carAutoTransmissionPetrolCreator = new CarAutoTransmissionPetrolCreator();
-            Creator carMechanicalTransmissionCreator = new CarMechanicalTransmissionCreator();
-            Creator bus45SeatsCreator = new Bus45SeatsCreator();
-            Creator truckMechanicalTransmissionCreator = new TruckMechanicalTransmissionCreator();
+            ICreator carAutoTransmissionPetrolCreator = new CarAutoTransmissionPetrolCreator();
+            ICreator carMechanicalTransmissionCreator = new CarMechanicalTransmissionCreator();
+            ICreator bus45SeatsCreator = new Bus45SeatsCreator();
+            ICreator truckMechanicalTransmissionCreator = new TruckMechanicalTransmissionCreator();
             autopark.Add(carAutoTransmissionPetrolCreator.Create());
             autopark.Add(carAutoTransmissionPetrolCreator.Create());
             autopark.Add(carMechanicalTransmissionCreator.Create());

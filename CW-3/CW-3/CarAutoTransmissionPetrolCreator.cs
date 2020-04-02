@@ -1,8 +1,8 @@
 ﻿namespace CW_3
 {
-    class CarAutoTransmissionPetrolCreator : Creator
+    class CarAutoTransmissionPetrolCreator : ICreator
     {
-        public override Vehicle Create()
+        public Vehicle Create()
         {
             Chassis chassis = new Chassis(4, 2000, "CH000001");
             Transmission transmission = new Transmission(TransmissionType.Automatical, 5, "Nestle");

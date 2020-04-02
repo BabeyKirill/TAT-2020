@@ -1,0 +1,7 @@
+C:\Users\mrKPb\source\repos\CW-3\CW-3\bin\Debug\CW-3.exe.config
+C:\Users\mrKPb\source\repos\CW-3\CW-3\bin\Debug\CW-3.exe
+C:\Users\mrKPb\source\repos\CW-3\CW-3\bin\Debug\CW-3.pdb
+C:\Users\mrKPb\source\repos\CW-3\CW-3\obj\Debug\CW-3.csprojAssemblyReference.cache
+C:\Users\mrKPb\source\repos\CW-3\CW-3\obj\Debug\CW-3.csproj.CoreCompileInputs.cache
+C:\Users\mrKPb\source\repos\CW-3\CW-3\obj\Debug\CW-3.exe
+C:\Users\mrKPb\source\repos\CW-3\CW-3\obj\Debug\CW-3.pdb
