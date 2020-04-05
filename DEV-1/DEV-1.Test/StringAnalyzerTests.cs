@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using DEV_1;
-using System;
 
 namespace Tests
 {
@@ -17,16 +16,11 @@ namespace Tests
         [TestCase(4, "ab12223c")]
         [TestCase(5, "abc~~#+-_")]
         [TestCase(4, "abc  de")]
+        [TestCase(0, "")]
+        [TestCase(0, null)]
         public void SequentiallyDifferentСount_Test(int correctAnswer, string inputString)
         {
             Assert.AreEqual(correctAnswer, StringAnalyzer.SequentiallyDifferentСount(inputString));
-        }
-
-        [TestCase("")]
-        [TestCase(null)]
-        public void SequentiallyDifferentСount_NullTest(string inputString)
-        {
-            Assert.Throws<NullReferenceException>(() => StringAnalyzer.SequentiallyDifferentСount(inputString));
         }
     }
 }

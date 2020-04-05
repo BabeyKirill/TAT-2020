@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DEV_1
+﻿namespace DEV_1
 {
     /// <summary>
     /// A class that contains methods for string analysis
@@ -13,9 +11,9 @@ namespace DEV_1
         /// <param name="inputString">considered string</param>
         public static int SequentiallyDifferentСount(string inputString)
         {
-            if (inputString == null || inputString == string.Empty)
+            if (string.IsNullOrEmpty(inputString))
             {
-                throw new NullReferenceException();
+                return 0;
             }
 
             int count = 1;
