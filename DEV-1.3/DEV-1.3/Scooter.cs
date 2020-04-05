@@ -5,12 +5,12 @@ namespace DEV_1._3
 {
     public class Scooter : Vehicle
     {
-        public Engine Engine { get; private set; }
-        public Chassis Chassis { get; private set; }
-        public Transmission Transmission { get; private set; }
+        public Engine Engine { get; set; }
+        public Chassis Chassis { get; set; }
+        public Transmission Transmission { get; set; }
 
-        private int _maxSpeed;
-        public int MaxSpeed
+        private int? _maxSpeed;
+        public int? MaxSpeed
         {
             get
             {
@@ -29,8 +29,8 @@ namespace DEV_1._3
             }
         }
 
-        private double _weight;
-        public double Weight
+        private double? _weight;
+        public double? Weight
         {
             get
             {
@@ -52,15 +52,10 @@ namespace DEV_1._3
         /// <summary>
         /// Hardcode creation of the scooter
         /// </summary>
-        public Scooter()
+        public Scooter(string model, string serialNumber)
         {
-            this.Engine = new Engine(25.5, 0.8, EngineType.Electrical, "EN000004");
-            this.Chassis = new Chassis(2, 150, "CH000004");
-            this.Transmission = new Transmission(TransmissionType.Mechanical, 6, "Disney");
-            Model = "MegaScooter 3000";
-            SerialNumber = "SC000001";
-            MaxSpeed = 60;
-            Weight = 63;
+            this.Model = model;
+            this.SerialNumber = serialNumber;
         }
 
         /// <summary>
@@ -73,9 +68,9 @@ namespace DEV_1._3
             info.Append($"\nserial number: {SerialNumber}");
             info.Append($"\nmax speed: {MaxSpeed}");
             info.Append($"\nweight: {Weight}");
-            info.Append($"\n{this.Engine.GetInfo()}");
-            info.Append($"\n{this.Chassis.GetInfo()}");
-            info.Append($"\n{this.Transmission.GetInfo()}");
+            info.Append(this.Engine != null ? $"\n{this.Engine.GetInfo()}" : String.Empty);
+            info.Append(this.Chassis != null ? $"\n{this.Chassis.GetInfo()}" : String.Empty);
+            info.Append(this.Transmission != null ? $"\n{this.Transmission.GetInfo()}" : String.Empty);
 
             return info.ToString();
         }

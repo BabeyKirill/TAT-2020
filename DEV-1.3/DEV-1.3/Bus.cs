@@ -14,14 +14,14 @@ namespace DEV_1._3
 
     public class Bus : Vehicle
     {
-        public Engine Engine { get; private set; }
-        public Chassis Chassis { get; private set; }
-        public Transmission Transmission { get; private set; }
+        public Engine Engine { get; set; }
+        public Chassis Chassis { get; set; }
+        public Transmission Transmission { get; set; }
 
         public BusAssignment Assigment { get; set; }
 
-        private int _numberOfSeats;
-        public int NumberOfSeats
+        private int? _numberOfSeats;
+        public int? NumberOfSeats
         {
             get
             {
@@ -40,18 +40,10 @@ namespace DEV_1._3
             }
         }
 
-        /// <summary>
-        /// Hardcode creation of the bus
-        /// </summary>
-        public Bus()
+        public Bus(string model, string serialNumber)
         {
-            this.Engine = new Engine(400, 7.2, EngineType.Diesel, "EN000003");
-            this.Chassis = new Chassis(6, 8000, "CH000003");
-            this.Transmission = new Transmission(TransmissionType.Electrical, 7, "Nike");
-            Model = "MegaBus 3000";
-            SerialNumber = "BU000001";
-            Assigment = BusAssignment.Tourist;
-            NumberOfSeats = 56;
+            this.Model = model;
+            this.SerialNumber = serialNumber;
         }
 
         /// <summary>
@@ -59,14 +51,14 @@ namespace DEV_1._3
         /// </summary>
         public override string GetInfo()
         {
-            StringBuilder info = new StringBuilder($"Object: bus");       
-            info.Append($"\nmodel: {Model}");
-            info.Append($"\nserial number: {SerialNumber}");
-            info.Append($"\nassigment: {Assigment}");
-            info.Append($"\nnumber of seats: {NumberOfSeats}");
-            info.Append($"\n{this.Engine.GetInfo()}");
-            info.Append($"\n{this.Chassis.GetInfo()}");
-            info.Append($"\n{this.Transmission.GetInfo()}");
+            StringBuilder info = new StringBuilder($"Object: bus");
+            info.Append($"\nmodel: {this.Model}");
+            info.Append($"\nserial number: {this.SerialNumber}");
+            info.Append($"\nassigment: {this.Assigment}");
+            info.Append($"\nnumber of seats: {this.NumberOfSeats}");
+            info.Append(this.Engine != null ? $"\n{this.Engine.GetInfo()}" : String.Empty);
+            info.Append(this.Chassis != null ? $"\n{this.Chassis.GetInfo()}" : String.Empty);
+            info.Append(this.Transmission != null ? $"\n{this.Transmission.GetInfo()}" : String.Empty);
 
             return info.ToString();
         }

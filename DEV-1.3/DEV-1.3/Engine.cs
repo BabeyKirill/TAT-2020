@@ -67,7 +67,7 @@ namespace DEV_1._3
             }
             private set
             {
-                if (value == null || value == string.Empty)
+                if (string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException();
                 }

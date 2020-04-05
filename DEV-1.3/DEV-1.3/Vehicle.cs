@@ -18,7 +18,7 @@ namespace DEV_1._3
             }
             protected set
             {
-                if (value == null || value == string.Empty)
+                if (string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException();
                 }
@@ -45,7 +45,7 @@ namespace DEV_1._3
             }
             protected set
             {
-                if (value == null || value == string.Empty)
+                if (string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException();
                 }

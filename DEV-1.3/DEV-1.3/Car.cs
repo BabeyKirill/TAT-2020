@@ -16,13 +16,13 @@ namespace DEV_1._3
 
     public class Car : Vehicle
     {
-        public Engine Engine { get; private set; }
-        public Chassis Chassis { get; private set; }
-        public Transmission Transmission { get; private set; }
+        public Engine Engine { get; set; }
+        public Chassis Chassis { get; set; }
+        public Transmission Transmission { get; set; }
         public CarType Type { get; set; }
 
-        private int _numberOfSeats;
-        public int NumberOfSeats
+        private int? _numberOfSeats;
+        public int? NumberOfSeats
         {
             get
             {
@@ -41,8 +41,8 @@ namespace DEV_1._3
             }
         }
 
-        private double _trunkVolume;
-        public double TrunkVolume
+        private double? _trunkVolume;
+        public double? TrunkVolume
         {
             get
             {
@@ -61,19 +61,10 @@ namespace DEV_1._3
             }
         }
 
-        /// <summary>
-        /// Hardcode creation of the car
-        /// </summary>
-        public Car()
+        public Car(string model, string serialNumber)
         {
-            this.Engine = new Engine(250, 4.5, EngineType.Petrol, "EN000001");
-            this.Chassis = new Chassis(4, 2000, "CH000001");
-            this.Transmission = new Transmission(TransmissionType.Mechanical, 5, "Nestle");
-            Model = "MegaCar 3000";
-            SerialNumber = "CA000001";
-            Type = CarType.Sedan;
-            NumberOfSeats = 5;
-            TrunkVolume = 55.5;          
+            this.Model = model;
+            this.SerialNumber = serialNumber;
         }
 
         /// <summary>
@@ -85,11 +76,11 @@ namespace DEV_1._3
             info.Append($"\nmodel: {Model}");
             info.Append($"\nserial number: {SerialNumber}");
             info.Append($"\ntype: {Type}");
-            info.Append($"\nnumber of seats: {NumberOfSeats}");           
-            info.Append($"\ntrunk volume: {TrunkVolume}");           
-            info.Append($"\n{this.Engine.GetInfo()}");
-            info.Append($"\n{this.Chassis.GetInfo()}");
-            info.Append($"\n{this.Transmission.GetInfo()}");
+            info.Append($"\nnumber of seats: {this.NumberOfSeats}");
+            info.Append($"\ntrunk volume: {this.TrunkVolume}");
+            info.Append(this.Engine != null ? $"\n{this.Engine.GetInfo()}" : String.Empty);
+            info.Append(this.Chassis != null ? $"\n{this.Chassis.GetInfo()}" : String.Empty);
+            info.Append(this.Transmission != null ? $"\n{this.Transmission.GetInfo()}" : String.Empty);
 
             return info.ToString();
         }

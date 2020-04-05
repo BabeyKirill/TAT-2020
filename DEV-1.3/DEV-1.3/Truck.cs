@@ -5,12 +5,12 @@ namespace DEV_1._3
 {
     public class Truck : Vehicle
     {
-        public Engine Engine { get; private set; }
-        public Chassis Chassis { get; private set; }
-        public Transmission Transmission { get; private set; }
+        public Engine Engine { get; set; }
+        public Chassis Chassis { get; set; }
+        public Transmission Transmission { get; set; }
 
-        private double _usefulVolume;
-        public double UsefulVolume
+        private double? _usefulVolume;
+        public double? UsefulVolume
         {
             get
             {
@@ -29,8 +29,8 @@ namespace DEV_1._3
             }
         }
 
-        private double _height;
-        public double Height
+        private double? _height;
+        public double? Height
         {
             get
             {
@@ -49,8 +49,8 @@ namespace DEV_1._3
             }
         }
 
-        private double _width;
-        public double Width
+        private double? _width;
+        public double? Width
         {
             get
             {
@@ -69,19 +69,10 @@ namespace DEV_1._3
             }
         }
 
-        /// <summary>
-        /// Hardcode creation of the truck
-        /// </summary>
-        public Truck()
+        public Truck(string model, string serialNumber)
         {
-            this.Engine = new Engine(1000, 9.8, EngineType.Diesel, "EN000002");
-            this.Chassis = new Chassis(6, 10000, "CH000002");
-            this.Transmission = new Transmission(TransmissionType.Combined, 6, "Happy wheels");
-            Model = "MegaTruck 3000";
-            SerialNumber = "TR000001";
-            UsefulVolume = 82.5;
-            Height = 3.8;
-            Width = 3.5;
+            this.Model = model;
+            this.SerialNumber = serialNumber;
         }
 
         /// <summary>
@@ -95,9 +86,9 @@ namespace DEV_1._3
             info.Append($"\nuseful volume: {UsefulVolume}");
             info.Append($"\nheight: {Height}");
             info.Append($"\nwidth: {Width}");
-            info.Append($"\n{this.Engine.GetInfo()}");
-            info.Append($"\n{this.Chassis.GetInfo()}");
-            info.Append($"\n{this.Transmission.GetInfo()}");
+            info.Append(this.Engine != null ? $"\n{this.Engine.GetInfo()}" : String.Empty);
+            info.Append(this.Chassis != null ? $"\n{this.Chassis.GetInfo()}" : String.Empty);
+            info.Append(this.Transmission != null ? $"\n{this.Transmission.GetInfo()}" : String.Empty);
 
             return info.ToString();
         }
