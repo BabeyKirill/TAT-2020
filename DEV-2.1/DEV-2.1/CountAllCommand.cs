@@ -4,7 +4,7 @@ namespace DEV_2._1
 {
     class CountAllCommand : ICommand
     {
-        private readonly CarShop Shop;
+        private CarShop Shop;
 
         /// <summary>
         /// This command prints in console the number of all cars in warehouse

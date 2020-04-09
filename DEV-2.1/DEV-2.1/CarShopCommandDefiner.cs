@@ -57,15 +57,9 @@ namespace DEV_2._1
 
         private void AddCar()
         {
-            Console.Write("Input brand name: ");
-            string brandName = Console.ReadLine();
-            Console.Write("Input model: ");
-            string model = Console.ReadLine();
-            Console.Write("Input serial number: ");
-            string serialNumber = Console.ReadLine();
-            Console.Write("Set price: ");
-            Double.TryParse(Console.ReadLine(), out double price);
-            _receiver.AddCarToWarehouse(new Car(brandName, model, serialNumber, price));
+            ICommand command = new AddCarCommand(_receiver);
+            _invoker.SetCommand(command);
+            _invoker.ExecuteCommand();
         }
 
         private void RemoveCar(string commandName)
@@ -73,7 +67,9 @@ namespace DEV_2._1
             if (commandName.Length > ("remove car ").Length)
             {
                 string serialNumber = commandName.Substring("remove car ".Length);
-                _receiver.RemoveCarFromWarehouse(serialNumber);
+                ICommand command = new RemoveCarCommand(_receiver, serialNumber);
+                _invoker.SetCommand(command);
+                _invoker.ExecuteCommand();
             }
             else
             {

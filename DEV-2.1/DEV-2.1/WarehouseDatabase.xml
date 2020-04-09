@@ -72,4 +72,10 @@
     <SerialNumber>SN00012</SerialNumber>
     <Price>2020</Price>
   </Car>
+  <Car>
+    <BrandName>Volvo</BrandName>
+    <Model>X100</Model>
+    <SerialNumber>SN00013</SerialNumber>
+    <Price>2019</Price>
+  </Car>
 </ArrayOfCar>

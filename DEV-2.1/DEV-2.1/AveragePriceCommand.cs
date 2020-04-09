@@ -4,7 +4,7 @@ namespace DEV_2._1
 {
     class AveragePriceCommand : ICommand
     {
-        private readonly CarShop Shop;
+        private CarShop Shop;
 
         /// <summary>
         /// This Command prints in console the average price of all cars in warehouse

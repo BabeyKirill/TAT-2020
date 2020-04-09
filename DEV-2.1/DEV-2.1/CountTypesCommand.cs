@@ -4,7 +4,7 @@ namespace DEV_2._1
 {    
     class CountTypesCommand : ICommand   
     {
-        private readonly CarShop Shop;
+        private CarShop Shop;
 
         /// <summary>
         /// This command prints in console the number of brands of cars in warehouse
