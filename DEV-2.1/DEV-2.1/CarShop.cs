@@ -1,84 +1,129 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Xml.Serialization;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace DEV_2._1
 {
     class CarShop
     {
-        public delegate void ShopStateHandler();
-        public event ShopStateHandler CarListChanged;   //this event is nessesary for updating database
-
         private static CarShop instance;
-        public List<Car> CarWarehose;
+        private XDocument CarDatabase;
+        private string DatabaseXmlFileName;
 
-        protected CarShop()
+        protected CarShop(string databaseXmlFileName)
         {
-            CarWarehose = new List<Car>();
+            this.DatabaseXmlFileName = databaseXmlFileName;
+
+            if (File.Exists($"../../{DatabaseXmlFileName}.xml") == false)
+            {
+                XDocument newEmptyDatabase = new XDocument(new XElement("Cars"));
+                newEmptyDatabase.Save($"../../{this.DatabaseXmlFileName}.xml");
+            }
+
+            try
+            {
+                this.CarDatabase = XDocument.Load($"../../{DatabaseXmlFileName}.xml");            
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Exception: {e.Message}");
+            }
         }
 
         /// <summary>
         /// SingleTone pattern, only one object of class can exist
         /// </summary>
-        public static CarShop GetInstance()
+        public static CarShop GetInstance(string databaseXmlFileName)
         {
             if (instance == null)
-                instance = new CarShop();
+                instance = new CarShop(databaseXmlFileName);
 
             return instance;
         }
 
         /// <summary>
-        /// set list CarWarehouse from XMl file
+        /// Add the car to Car database
         /// </summary>
-        public void InitializeFromXml(string databaseXmlFileName)
+        public void AddCarToWarehouse(string serialNumber, string brandName, string model, double price)
         {
-            if (File.Exists($@"../../{databaseXmlFileName}.xml"))
+            if (price == 0)
             {
-                XmlSerializer formatter = new XmlSerializer(typeof(List<Car>));
+                throw new ArgumentException("Invalid price, only positive numbers allowed");
+            }
 
-                try
-                {
-                    using (FileStream fs = new FileStream($@"../../{databaseXmlFileName}.xml", FileMode.OpenOrCreate))
-                    {
-                        this.CarWarehose = (List<Car>)formatter.Deserialize(fs);
-                    }
-                }
-                catch(Exception e)
-                {
-                    Console.WriteLine($"Exception: {e.Message}");
-                }
+            var existingSerialNumbers = from element in CarDatabase.Element("Cars").Elements("Car")
+                                select element.Attribute("SerialNumber").Value;
+
+            if (existingSerialNumbers.Contains(serialNumber) == false)
+            {
+                XmlDocument xmlDatabase = new XmlDocument();
+                xmlDatabase.Load($"../../{this.DatabaseXmlFileName}.xml");
+                XmlElement xRoot = xmlDatabase.DocumentElement;
+                // creating new car element
+                XmlElement car = xmlDatabase.CreateElement("Car");
+                // creating attribute SerialNumber for car
+                XmlAttribute serialNumberAttribute = xmlDatabase.CreateAttribute("SerialNumber");
+                // creating elements for car element
+                XmlElement brandNameElement = xmlDatabase.CreateElement("BrandName");
+                XmlElement modelElement = xmlDatabase.CreateElement("Model");
+                XmlElement priceElement = xmlDatabase.CreateElement("Price");
+
+                // setting values for elements and attributes
+                XmlText serialNumberValue = xmlDatabase.CreateTextNode(serialNumber);
+                XmlText brandNameValue = xmlDatabase.CreateTextNode(brandName);
+                XmlText modelValue = xmlDatabase.CreateTextNode(model);
+                XmlText priceValue = xmlDatabase.CreateTextNode(price.ToString());
+
+                //adding elements and attributes in XmlDocument
+                serialNumberAttribute.AppendChild(serialNumberValue);
+                brandNameElement.AppendChild(brandNameValue);
+                modelElement.AppendChild(modelValue);
+                priceElement.AppendChild(priceValue);
+                car.Attributes.Append(serialNumberAttribute);
+                car.AppendChild(brandNameElement);
+                car.AppendChild(modelElement);
+                car.AppendChild(priceElement);
+                xRoot.AppendChild(car);
+
+                xmlDatabase.Save($"../../{this.DatabaseXmlFileName}.xml");
+                this.CarDatabase = XDocument.Load($"../../{this.DatabaseXmlFileName}.xml");
             }
             else
             {
-                throw new FileNotFoundException("xml database not found");
+                throw new ArgumentException("Car with this serial number already exists in database");
             }
         }
 
         /// <summary>
-        /// Add the car to list CarWarehouse
-        /// </summary>
-        public void AddCarToWarehouse(Car car)
-        {
-            this.CarWarehose.Add(car);
-            CarListChanged();
-        }
-
-        /// <summary>
-        /// Search the car by serial number and then remove it from list CarWarehouse
+        /// Search the car by serial number and then remove it from Car database
         /// </summary>
         public void RemoveCarFromWarehouse(string serialNumber)
         {
-            foreach(Car car in CarWarehose)
+            var serialNumbers = from element in CarDatabase.Element("Cars").Elements("Car")
+                                select element.Attribute("SerialNumber").Value;
+
+            if (serialNumbers.Contains(serialNumber) == true)
             {
-                if(car.SerialNumber == serialNumber)
+                XmlDocument xmlDatabase = new XmlDocument();
+                xmlDatabase.Load($"../../{this.DatabaseXmlFileName}.xml");
+                XmlElement xRoot = xmlDatabase.DocumentElement;
+
+                foreach (XmlNode xNode in xRoot)
                 {
-                    this.CarWarehose.Remove(car);
-                    CarListChanged();
-                    break;
+                    if (xNode.Attributes["SerialNumber"].Value == serialNumber)
+                    {
+                        xRoot.RemoveChild(xNode);
+                    }
                 }
+
+                xmlDatabase.Save($"../../{this.DatabaseXmlFileName}.xml");
+                this.CarDatabase = XDocument.Load($"../../{this.DatabaseXmlFileName}.xml");
+            }
+            else
+            {
+                throw new ArgumentException("Car with this serial number is not found in database");
             }
         }
 
@@ -87,17 +132,10 @@ namespace DEV_2._1
         /// </summary>
         public int GetCountTypes()
         {
-            List<string> brands = new List<string>();
-
-            foreach(Car car in CarWarehose)
-            {
-                if(brands.Contains(car.BrandName) == false)
-                {
-                    brands.Add(car.BrandName);
-                }
-            }
-
-            return brands.Count;
+            var brands = (from element in CarDatabase.Element("Cars").Elements("Car")
+                                        select element.Element("BrandName").Value)
+                                        .Distinct();
+            return brands.Count();
         }
 
         /// <summary>
@@ -105,7 +143,10 @@ namespace DEV_2._1
         /// </summary>
         public int GetCountAll()
         {
-            return CarWarehose.Count();
+            int numberOfCars = (from elements in CarDatabase.Element("Cars").Elements("Car")
+                                select elements).Count();
+
+            return numberOfCars;
         }
 
         /// <summary>
@@ -116,9 +157,12 @@ namespace DEV_2._1
             int totalNumber = GetCountAll();
             double totalCost = 0;
 
-            foreach (Car car in CarWarehose)
+            var prices = from elements in CarDatabase.Element("Cars").Elements("Car")
+                        select Double.Parse(elements.Element("Price").Value);
+
+            foreach (var price in prices)
             {
-                totalCost += car.Price;
+                totalCost += price;
             }
 
             return totalCost / totalNumber;
@@ -129,19 +173,20 @@ namespace DEV_2._1
         /// </summary>
         public double GetAveragePriceType(string BrandName)
         {
-            double totalBrandCost = 0;
-            int numberOfCars = 0;
+            double totalCost = 0;
 
-            foreach (Car car in CarWarehose)
+            var prices = from elements in CarDatabase.Element("Cars").Elements("Car")
+                        where elements.Element("BrandName").Value == BrandName
+                        select Double.Parse(elements.Element("Price").Value);
+
+            int totalNumber = prices.Count();
+
+            foreach (var price in prices)
             {
-                if(car.BrandName == BrandName)
-                {
-                    numberOfCars++;
-                    totalBrandCost += car.Price;
-                }
+                totalCost += price;
             }
 
-            return numberOfCars > 0 ? totalBrandCost / numberOfCars : 0;
+            return totalNumber != 0 ? totalCost / totalNumber : 0;
         }
     }
 }

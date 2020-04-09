@@ -1,4 +1,6 @@
-﻿namespace DEV_2._1
+﻿using System;
+
+namespace DEV_2._1
 {
     class RemoveCarCommand : ICommand
     {
@@ -15,8 +17,15 @@
         }
 
         public void Execute()
-        {
-            Shop.RemoveCarFromWarehouse(SerialNumber);
+        {         
+            try
+            {
+                this.Shop.RemoveCarFromWarehouse(SerialNumber);
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

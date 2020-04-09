@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DEV_2._1
 {
@@ -20,15 +16,23 @@ namespace DEV_2._1
 
         public void Execute()
         {
+            Console.Write("Input serial number: ");
+            string serialNumber = Console.ReadLine();
             Console.Write("Input brand name: ");
             string brandName = Console.ReadLine();
             Console.Write("Input model: ");
-            string model = Console.ReadLine();
-            Console.Write("Input serial number: ");
-            string serialNumber = Console.ReadLine();
+            string model = Console.ReadLine();            
             Console.Write("Set price: ");
             Double.TryParse(Console.ReadLine(), out double price);
-            this.Shop.AddCarToWarehouse(new Car(brandName, model, serialNumber, price));
+
+            try
+            {
+                this.Shop.AddCarToWarehouse(serialNumber, brandName, model, price);
+            }
+            catch(ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

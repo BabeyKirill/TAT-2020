@@ -1,81 +1,53 @@
-<?xml version="1.0"?>
-<ArrayOfCar xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Car>
-    <BrandName>bName1</BrandName>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Cars>
+  <Car SerialNumber="SN01">
+    <BrandName>BN1</BrandName>
     <Model>Model1</Model>
-    <SerialNumber>SN0001</SerialNumber>
-    <Price>500</Price>
-  </Car>
-  <Car>
-    <BrandName>bName2</BrandName>
-    <Model>Model2</Model>
-    <SerialNumber>SN0002</SerialNumber>
-    <Price>700</Price>
-  </Car>
-  <Car>
-    <BrandName>bName3</BrandName>
-    <Model>Model3</Model>
-    <SerialNumber>SN0003</SerialNumber>
-    <Price>650</Price>
-  </Car>
-  <Car>
-    <BrandName>bName1</BrandName>
-    <Model>Model4</Model>
-    <SerialNumber>SN0004</SerialNumber>
     <Price>1000</Price>
   </Car>
-  <Car>
-    <BrandName>bName1</BrandName>
+  <Car SerialNumber="SN02">
+    <BrandName>BN2</BrandName>
+    <Model>Model2</Model>
+    <Price>1100</Price>
+  </Car>
+  <Car SerialNumber="SN03">
+    <BrandName>BN2</BrandName>
+    <Model>Model3</Model>
+    <Price>1200</Price>
+  </Car>
+  <Car SerialNumber="SN04">
+    <BrandName>BN3</BrandName>
+    <Model>Model4</Model>
+    <Price>1300</Price>
+  </Car>
+  <Car SerialNumber="SN05">
+    <BrandName>BN2</BrandName>
     <Model>Model5</Model>
-    <SerialNumber>SN0005</SerialNumber>
-    <Price>1500</Price>
+    <Price>2000</Price>
   </Car>
-  <Car>
-    <BrandName>bName2</BrandName>
+  <Car SerialNumber="SN06">
+    <BrandName>BN1</BrandName>
     <Model>Model6</Model>
-    <SerialNumber>SN0006</SerialNumber>
-    <Price>600</Price>
-  </Car>
-  <Car>
-    <BrandName>bName3</BrandName>
-    <Model>Model7</Model>
-    <SerialNumber>SN0007</SerialNumber>
-    <Price>750</Price>
-  </Car>
-  <Car>
-    <BrandName>bName3</BrandName>
-    <Model>Model8</Model>
-    <SerialNumber>SN0008</SerialNumber>
-    <Price>600</Price>
-  </Car>
-  <Car>
-    <BrandName>bName3</BrandName>
-    <Model>Model9</Model>
-    <SerialNumber>SN0009</SerialNumber>
     <Price>800</Price>
   </Car>
-  <Car>
-    <BrandName>bName4</BrandName>
+  <Car SerialNumber="SN07">
+    <BrandName>BN3</BrandName>
+    <Model>Model7</Model>
+    <Price>900</Price>
+  </Car>
+  <Car SerialNumber="SN08">
+    <BrandName>BN2</BrandName>
+    <Model>Model8</Model>
+    <Price>1400</Price>
+  </Car>
+  <Car SerialNumber="SN09">
+    <BrandName>BN3</BrandName>
+    <Model>Model9</Model>
+    <Price>1500</Price>
+  </Car>
+  <Car SerialNumber="SN10">
+    <BrandName>BN4</BrandName>
     <Model>Model10</Model>
-    <SerialNumber>SN00010</SerialNumber>
-    <Price>1550</Price>
+    <Price>10000</Price>
   </Car>
-  <Car>
-    <BrandName>Volvo</BrandName>
-    <Model>X60</Model>
-    <SerialNumber>SN00011</SerialNumber>
-    <Price>15000</Price>
-  </Car>
-  <Car>
-    <BrandName>Volvo</BrandName>
-    <Model>X80</Model>
-    <SerialNumber>SN00012</SerialNumber>
-    <Price>2020</Price>
-  </Car>
-  <Car>
-    <BrandName>Volvo</BrandName>
-    <Model>X100</Model>
-    <SerialNumber>SN00013</SerialNumber>
-    <Price>2019</Price>
-  </Car>
-</ArrayOfCar>
+</Cars>

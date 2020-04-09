@@ -73,7 +73,7 @@ namespace DEV_2._1
             }
             else
             {
-                Console.WriteLine("You should write the serial number of removing car");
+                Console.WriteLine("You should input serial number of removing car");
             }
         }
 

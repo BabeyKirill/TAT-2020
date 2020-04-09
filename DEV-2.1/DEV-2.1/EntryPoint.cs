@@ -7,10 +7,7 @@ namespace DEV_2._1
         static void Main(string[] args)
         {
             string databaseXmlFileName = "WarehouseDatabase";
-            CarShop myShop = CarShop.GetInstance();
-            CarShopEventHandler shopHandler = new CarShopEventHandler(myShop, databaseXmlFileName);
-            myShop.InitializeFromXml(databaseXmlFileName);
-            myShop.CarListChanged += shopHandler.UpdateWarehouseXml;      
+            CarShop myShop = CarShop.GetInstance(databaseXmlFileName);    
             CarShopCommandDefiner commandDefiner = new CarShopCommandDefiner(myShop);
 
             string commandName = string.Empty;
@@ -18,7 +15,7 @@ namespace DEV_2._1
 
             while (true)
             {
-                Console.Write("Write command: ");
+                Console.Write("\nWrite command: ");
                 commandName = Console.ReadLine();
 
                 if (commandName == "exit")
