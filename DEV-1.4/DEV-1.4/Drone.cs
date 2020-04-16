@@ -10,7 +10,7 @@ namespace DEV_1._4
         public const double Speed = 12;
         public const double StopPeriod = 0.166666666;        // 10 minutes in hours
         public const double StopTime = 0.016666666;         // 1 minute in hours
-        public const double MaxDistance = 1500;
+        public const double MaxDistance = 1000;
 
         public Drone(Coordinates startPosition)
         {
