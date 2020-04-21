@@ -18,8 +18,8 @@ namespace DEV_2._1
         {
             Console.Write("Input serial number: ");
             string serialNumber = Console.ReadLine();
-            Console.Write("Input brand name: ");
-            string brandName = Console.ReadLine();
+            Console.Write("Input brand Id: ");
+            string brandId = Console.ReadLine();
             Console.Write("Input model: ");
             string model = Console.ReadLine();            
             Console.Write("Set price: ");
@@ -27,7 +27,7 @@ namespace DEV_2._1
 
             try
             {
-                this.Shop.AddCarToWarehouse(serialNumber, brandName, model, price);
+                this.Shop.AddCarToWarehouse(serialNumber, brandId, model, price);
             }
             catch(ArgumentException e)
             {

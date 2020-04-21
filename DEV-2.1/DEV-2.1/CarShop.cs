@@ -10,6 +10,7 @@ namespace DEV_2._1
     {
         private static CarShop instance;
         private XDocument CarDatabase;
+        private XDocument BrandsDatabase;
         private string DatabaseXmlFileName;
 
         protected CarShop(string databaseXmlFileName)
@@ -24,7 +25,8 @@ namespace DEV_2._1
 
             try
             {
-                this.CarDatabase = XDocument.Load($"../../{DatabaseXmlFileName}.xml");            
+                this.CarDatabase = XDocument.Load($"../../{DatabaseXmlFileName}.xml");
+                this.BrandsDatabase = XDocument.Load($"../../Brands.xml");
             }
             catch (Exception e)
             {
@@ -46,7 +48,7 @@ namespace DEV_2._1
         /// <summary>
         /// Add the car to Car database
         /// </summary>
-        public void AddCarToWarehouse(string serialNumber, string brandName, string model, double price)
+        public void AddCarToWarehouse(string serialNumber, string brandId, string model, double price)
         {
             if (price == 0)
             {
@@ -72,13 +74,13 @@ namespace DEV_2._1
 
                 // setting values for elements and attributes
                 XmlText serialNumberValue = xmlDatabase.CreateTextNode(serialNumber);
-                XmlText brandNameValue = xmlDatabase.CreateTextNode(brandName);
+                XmlText brandIdValue = xmlDatabase.CreateTextNode(brandId);
                 XmlText modelValue = xmlDatabase.CreateTextNode(model);
                 XmlText priceValue = xmlDatabase.CreateTextNode(price.ToString());
 
                 //adding elements and attributes in XmlDocument
                 serialNumberAttribute.AppendChild(serialNumberValue);
-                brandNameElement.AppendChild(brandNameValue);
+                brandNameElement.AppendChild(brandIdValue);
                 modelElement.AppendChild(modelValue);
                 priceElement.AppendChild(priceValue);
                 car.Attributes.Append(serialNumberAttribute);
@@ -132,10 +134,11 @@ namespace DEV_2._1
         /// </summary>
         public int GetCountTypes()
         {
-            var brands = (from element in CarDatabase.Element("Cars").Elements("Car")
-                                        select element.Element("BrandName").Value)
-                                        .Distinct();
-            return brands.Count();
+            var brandsId = (from element in CarDatabase.Element("Cars").Elements("Car")
+                            select element.Element("BrandId").Value)
+                           .Distinct();
+
+            return brandsId.Count();
         }
 
         /// <summary>
@@ -155,17 +158,18 @@ namespace DEV_2._1
         public double GetAveragePrice()
         {
             int totalNumber = GetCountAll();
+
             double totalCost = 0;
 
             var prices = from elements in CarDatabase.Element("Cars").Elements("Car")
-                        select Double.Parse(elements.Element("Price").Value);
+                         select Double.Parse(elements.Element("Price").Value);
 
             foreach (var price in prices)
             {
                 totalCost += price;
             }
 
-            return totalCost / totalNumber;
+            return totalNumber != 0 ? totalCost / totalNumber : 0;
         }
 
         /// <summary>
@@ -175,9 +179,23 @@ namespace DEV_2._1
         {
             double totalCost = 0;
 
+            var brandIdEnum = (from element in BrandsDatabase.Element("Brands").Elements("Brand")
+                              where element.Element("Name").Value == BrandName
+                              select element.Attribute("Id").Value);
+            string brandId;
+
+            if (brandIdEnum.Count() != 0)
+            {
+                brandId = brandIdEnum.First();
+            }
+            else
+            {
+                return 0;
+            }
+
             var prices = from elements in CarDatabase.Element("Cars").Elements("Car")
-                        where elements.Element("BrandName").Value == BrandName
-                        select Double.Parse(elements.Element("Price").Value);
+                         where elements.Element("BrandId").Value == brandId
+                         select Double.Parse(elements.Element("Price").Value);
 
             int totalNumber = prices.Count();
 

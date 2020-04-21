@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Brands>
+  <Brand Id="B11">
+    <Name>BN1</Name>
+    <Owner>Vasya</Owner>
+    <NumberOfEmployees>1337</NumberOfEmployees>
+  </Brand>
+  <Brand Id="B12">
+    <Name>BN2</Name>
+    <Owner>Pupkin</Owner>
+    <NumberOfEmployees>1488</NumberOfEmployees>
+  </Brand>
+  <Brand Id="B13">
+    <Name>BN3</Name>
+    <Owner>Jenkins</Owner>
+    <NumberOfEmployees>228</NumberOfEmployees>
+  </Brand>
+  <Brand Id="B14">
+    <Name>BN4</Name>
+    <Owner>Svetlana</Owner>
+    <NumberOfEmployees>322</NumberOfEmployees>
+  </Brand>
+</Brands>

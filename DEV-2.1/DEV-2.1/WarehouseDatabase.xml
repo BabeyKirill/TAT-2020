@@ -1,53 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Cars>
   <Car SerialNumber="SN01">
-    <BrandName>BN1</BrandName>
+    <BrandId>B11</BrandId>
     <Model>Model1</Model>
-    <Price>1000</Price>
-  </Car>
-  <Car SerialNumber="SN02">
-    <BrandName>BN2</BrandName>
-    <Model>Model2</Model>
     <Price>1100</Price>
   </Car>
-  <Car SerialNumber="SN03">
-    <BrandName>BN2</BrandName>
-    <Model>Model3</Model>
+  <Car SerialNumber="SN02">
+    <BrandId>B11</BrandId>
+    <Model>Model2</Model>
     <Price>1200</Price>
   </Car>
+  <Car SerialNumber="SN03">
+    <BrandId>B12</BrandId>
+    <Model>Model3</Model>
+    <Price>2100</Price>
+  </Car>
   <Car SerialNumber="SN04">
-    <BrandName>BN3</BrandName>
+    <BrandId>B12</BrandId>
     <Model>Model4</Model>
-    <Price>1300</Price>
+    <Price>2200</Price>
   </Car>
   <Car SerialNumber="SN05">
-    <BrandName>BN2</BrandName>
+    <BrandId>B13</BrandId>
     <Model>Model5</Model>
-    <Price>2000</Price>
+    <Price>3100</Price>
   </Car>
   <Car SerialNumber="SN06">
-    <BrandName>BN1</BrandName>
+    <BrandId>B11</BrandId>
     <Model>Model6</Model>
-    <Price>800</Price>
+    <Price>1300</Price>
   </Car>
   <Car SerialNumber="SN07">
-    <BrandName>BN3</BrandName>
+    <BrandId>B11</BrandId>
     <Model>Model7</Model>
-    <Price>900</Price>
-  </Car>
-  <Car SerialNumber="SN08">
-    <BrandName>BN2</BrandName>
-    <Model>Model8</Model>
     <Price>1400</Price>
   </Car>
+  <Car SerialNumber="SN08">
+    <BrandId>B12</BrandId>
+    <Model>Model8</Model>
+    <Price>2300</Price>
+  </Car>
   <Car SerialNumber="SN09">
-    <BrandName>BN3</BrandName>
+    <BrandId>B13</BrandId>
     <Model>Model9</Model>
-    <Price>1500</Price>
+    <Price>3200</Price>
   </Car>
   <Car SerialNumber="SN10">
-    <BrandName>BN4</BrandName>
+    <BrandId>B14</BrandId>
     <Model>Model10</Model>
-    <Price>10000</Price>
+    <Price>20000</Price>
   </Car>
 </Cars>
