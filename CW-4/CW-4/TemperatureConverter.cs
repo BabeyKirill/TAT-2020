@@ -4,8 +4,6 @@ namespace CW_4
 {
     class TemperatureConverter : IConverter
     {
-        const int ZeroCelsiumByFahrenheit = 273;
-
         public double Convert(double input, string direction)
         {
             if (direction == "CF")
@@ -27,7 +25,7 @@ namespace CW_4
         /// </summary>
         public double ConvertCtoF(double inputCelsium)
         {
-            return inputCelsium + ZeroCelsiumByFahrenheit;
+            return (inputCelsium * 9) / 5 + 32;
         }
 
         /// <summary>
@@ -35,7 +33,7 @@ namespace CW_4
         /// </summary>
         public double ConvertFtoC(double inputFahrenheit)
         {
-            return inputFahrenheit - ZeroCelsiumByFahrenheit;
+            return ((inputFahrenheit - 32) / 9) * 5;
         }
     }
 }
