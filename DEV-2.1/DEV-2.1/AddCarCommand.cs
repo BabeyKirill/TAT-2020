@@ -21,18 +21,11 @@ namespace DEV_2._1
             Console.Write("Input brand Id: ");
             string brandId = Console.ReadLine();
             Console.Write("Input model Id: ");
-            string model = Console.ReadLine();            
+            string modelId = Console.ReadLine();            
             Console.Write("Set price: ");
             Double.TryParse(Console.ReadLine(), out double price);
 
-            try
-            {
-                this.Shop.AddCarToWarehouse(serialNumber, brandId, model, price);
-            }
-            catch(ArgumentException e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            this.Shop.AddCarToWarehouse(new SerializableCar(serialNumber, brandId, modelId, price));
         }
     }
 }

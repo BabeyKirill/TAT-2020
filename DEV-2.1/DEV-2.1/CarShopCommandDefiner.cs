@@ -4,119 +4,79 @@ namespace DEV_2._1
 {
     class CarShopCommandDefiner
     {
-        private Invoker _invoker;
-        private CarShop _receiver;
+        private CarShop Receiver;
 
         /// <summary>
-        /// This class can define inputed commands for Car shop and execute them
+        /// This class can define inputed commands for Car shop
         /// </summary>
         public CarShopCommandDefiner(CarShop receiver)
         {
-            this._invoker = new Invoker();
-            this._receiver = receiver;
+            this.Receiver = receiver;
         }
 
         /// <summary>
-        /// This method define inputed command and execute it
+        /// This method define inputed command
         /// </summary>
-        public void DefineAndRunCommand(string commandName)
+        public ICommand DefineCommand(string commandName)
         {
+            ICommand command;
+
             if (commandName == "add car")
             {
-                AddCar();
+                command = new AddCarCommand(this.Receiver);                
             }
             else if (commandName.IndexOf("remove car") == 0)
             {
-                RemoveCar(commandName);
+                command = SetRemoveCarCommand(commandName);
             }
             else if (commandName == "count types")
             {
-                CountTypes();
+                command = new CountTypesCommand(this.Receiver);
             }
             else if (commandName == "count all")
             {
-                CountAll();
+                command = new CountAllCommand(this.Receiver);
             }
             else if (commandName == "average price")
             {
-                AveragePrice();
+                command = new AveragePriceCommand(this.Receiver);
             }
             else if (commandName.IndexOf("average price type") == 0)
             {
-                AveragePriceType(commandName);
-            }
-            else if (commandName == "help")
-            {
-                Help();
+                command = SetAveragePriceTypeCommand(commandName);
             }
             else
             {
-                Console.WriteLine("Unknown Command");
+                throw new ArgumentException("Unknown command");
             }
+
+            return command;
         }
 
-        private void AddCar()
-        {
-            ICommand command = new AddCarCommand(_receiver);
-            _invoker.SetCommand(command);
-            _invoker.ExecuteCommand();
-        }
-
-        private void RemoveCar(string commandName)
+        private ICommand SetRemoveCarCommand(string commandName)
         {
             if (commandName.Length > ("remove car ").Length)
             {
                 string serialNumber = commandName.Substring("remove car ".Length);
-                ICommand command = new RemoveCarCommand(_receiver, serialNumber);
-                _invoker.SetCommand(command);
-                _invoker.ExecuteCommand();
+                return new RemoveCarCommand(this.Receiver, serialNumber);
             }
             else
             {
-                Console.WriteLine("You should input serial number of removing car");
+                throw new ArgumentException("command parameter is not set");
             }
         }
 
-        private void CountTypes()
-        {
-            ICommand command = new CountTypesCommand(_receiver);
-            _invoker.SetCommand(command);
-            _invoker.ExecuteCommand();
-        }
-
-        private void CountAll()
-        {
-            ICommand command = new CountAllCommand(_receiver);
-            _invoker.SetCommand(command);
-            _invoker.ExecuteCommand();
-        }
-
-        private void AveragePrice()
-        {
-            ICommand command = new AveragePriceCommand(_receiver);
-            _invoker.SetCommand(command);
-            _invoker.ExecuteCommand();
-        }
-
-        private void AveragePriceType(string commandName)
+        private ICommand SetAveragePriceTypeCommand(string commandName)
         {
             if (commandName.Length > ("average price type ").Length)
             {
                 string brandName = commandName.Substring("average price type ".Length);
-                ICommand command = new AveragePriceTypeCommand(_receiver, brandName);
-                _invoker.SetCommand(command);
-                _invoker.ExecuteCommand();
+                return new AveragePriceTypeCommand(this.Receiver, brandName);
             }
             else
             {
-                Console.WriteLine("You should set required brand");
+                throw new ArgumentException("command parameter is not set");
             }
-        }
-
-        private void Help()
-        {
-            Console.WriteLine("Possible commands: add car; remove car (serial number); ");
-            Console.WriteLine("count types; count all; average price; average price type (brand);");
         }
     }
 }

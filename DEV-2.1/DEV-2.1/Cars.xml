@@ -1,53 +1,53 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Cars>
-  <Car SerialNumber="SN01">
+<?xml version="1.0"?>
+<ArrayOfSerializableCar xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SerializableCar SerialNumber="SN01">
     <BrandId>B11</BrandId>
     <ModelId>M11</ModelId>
     <Price>1100</Price>
-  </Car>
-  <Car SerialNumber="SN02">
+  </SerializableCar>
+  <SerializableCar SerialNumber="SN02">
     <BrandId>B11</BrandId>
     <ModelId>M12</ModelId>
     <Price>1200</Price>
-  </Car>
-  <Car SerialNumber="SN03">
+  </SerializableCar>
+  <SerializableCar SerialNumber="SN03">
     <BrandId>B12</BrandId>
     <ModelId>M13</ModelId>
     <Price>2100</Price>
-  </Car>
-  <Car SerialNumber="SN04">
+  </SerializableCar>
+  <SerializableCar SerialNumber="SN04">
     <BrandId>B12</BrandId>
     <ModelId>M14</ModelId>
     <Price>2200</Price>
-  </Car>
-  <Car SerialNumber="SN05">
+  </SerializableCar>
+  <SerializableCar SerialNumber="SN05">
     <BrandId>B13</BrandId>
     <ModelId>M15</ModelId>
     <Price>3100</Price>
-  </Car>
-  <Car SerialNumber="SN06">
+  </SerializableCar>
+  <SerializableCar SerialNumber="SN06">
     <BrandId>B11</BrandId>
     <ModelId>M16</ModelId>
     <Price>1300</Price>
-  </Car>
-  <Car SerialNumber="SN07">
+  </SerializableCar>
+  <SerializableCar SerialNumber="SN07">
     <BrandId>B11</BrandId>
     <ModelId>M17</ModelId>
     <Price>1400</Price>
-  </Car>
-  <Car SerialNumber="SN08">
+  </SerializableCar>
+  <SerializableCar SerialNumber="SN08">
     <BrandId>B12</BrandId>
     <ModelId>M18</ModelId>
     <Price>2300</Price>
-  </Car>
-  <Car SerialNumber="SN09">
+  </SerializableCar>
+  <SerializableCar SerialNumber="SN09">
     <BrandId>B13</BrandId>
     <ModelId>M19</ModelId>
     <Price>3200</Price>
-  </Car>
-  <Car SerialNumber="SN10">
+  </SerializableCar>
+  <SerializableCar SerialNumber="SN10">
     <BrandId>B14</BrandId>
     <ModelId>M20</ModelId>
     <Price>20000</Price>
-  </Car>
-</Cars>
+  </SerializableCar>
+</ArrayOfSerializableCar>
