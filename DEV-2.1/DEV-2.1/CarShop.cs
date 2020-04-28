@@ -48,7 +48,7 @@ namespace DEV_2._1
         /// <summary>
         /// Add the car to Car database
         /// </summary>
-        public void AddCarToWarehouse(string serialNumber, string brandId, string model, double price)
+        public void AddCarToWarehouse(string serialNumber, string brandId, string modelId, double price)
         {
             if (price == 0)
             {
@@ -68,24 +68,24 @@ namespace DEV_2._1
                 // creating attribute SerialNumber for car
                 XmlAttribute serialNumberAttribute = xmlDatabase.CreateAttribute("SerialNumber");
                 // creating elements for car element
-                XmlElement brandNameElement = xmlDatabase.CreateElement("BrandName");
-                XmlElement modelElement = xmlDatabase.CreateElement("Model");
+                XmlElement brandIdElement = xmlDatabase.CreateElement("BrandId");
+                XmlElement modelIdElement = xmlDatabase.CreateElement("ModelId");
                 XmlElement priceElement = xmlDatabase.CreateElement("Price");
 
                 // setting values for elements and attributes
                 XmlText serialNumberValue = xmlDatabase.CreateTextNode(serialNumber);
                 XmlText brandIdValue = xmlDatabase.CreateTextNode(brandId);
-                XmlText modelValue = xmlDatabase.CreateTextNode(model);
+                XmlText modelIdValue = xmlDatabase.CreateTextNode(modelId);
                 XmlText priceValue = xmlDatabase.CreateTextNode(price.ToString());
 
                 //adding elements and attributes in XmlDocument
                 serialNumberAttribute.AppendChild(serialNumberValue);
-                brandNameElement.AppendChild(brandIdValue);
-                modelElement.AppendChild(modelValue);
+                brandIdElement.AppendChild(brandIdValue);
+                modelIdElement.AppendChild(modelIdValue);
                 priceElement.AppendChild(priceValue);
                 car.Attributes.Append(serialNumberAttribute);
-                car.AppendChild(brandNameElement);
-                car.AppendChild(modelElement);
+                car.AppendChild(brandIdElement);
+                car.AppendChild(modelIdElement);
                 car.AppendChild(priceElement);
                 xRoot.AppendChild(car);
 

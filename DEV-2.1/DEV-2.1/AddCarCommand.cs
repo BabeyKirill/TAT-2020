@@ -20,7 +20,7 @@ namespace DEV_2._1
             string serialNumber = Console.ReadLine();
             Console.Write("Input brand Id: ");
             string brandId = Console.ReadLine();
-            Console.Write("Input model: ");
+            Console.Write("Input model Id: ");
             string model = Console.ReadLine();            
             Console.Write("Set price: ");
             Double.TryParse(Console.ReadLine(), out double price);

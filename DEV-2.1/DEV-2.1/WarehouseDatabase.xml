@@ -2,52 +2,52 @@
 <Cars>
   <Car SerialNumber="SN01">
     <BrandId>B11</BrandId>
-    <Model>Model1</Model>
+    <ModelId>M11</ModelId>
     <Price>1100</Price>
   </Car>
   <Car SerialNumber="SN02">
     <BrandId>B11</BrandId>
-    <Model>Model2</Model>
+    <ModelId>M12</ModelId>
     <Price>1200</Price>
   </Car>
   <Car SerialNumber="SN03">
     <BrandId>B12</BrandId>
-    <Model>Model3</Model>
+    <ModelId>M13</ModelId>
     <Price>2100</Price>
   </Car>
   <Car SerialNumber="SN04">
     <BrandId>B12</BrandId>
-    <Model>Model4</Model>
+    <ModelId>M14</ModelId>
     <Price>2200</Price>
   </Car>
   <Car SerialNumber="SN05">
     <BrandId>B13</BrandId>
-    <Model>Model5</Model>
+    <ModelId>M15</ModelId>
     <Price>3100</Price>
   </Car>
   <Car SerialNumber="SN06">
     <BrandId>B11</BrandId>
-    <Model>Model6</Model>
+    <ModelId>M16</ModelId>
     <Price>1300</Price>
   </Car>
   <Car SerialNumber="SN07">
     <BrandId>B11</BrandId>
-    <Model>Model7</Model>
+    <ModelId>M17</ModelId>
     <Price>1400</Price>
   </Car>
   <Car SerialNumber="SN08">
     <BrandId>B12</BrandId>
-    <Model>Model8</Model>
+    <ModelId>M18</ModelId>
     <Price>2300</Price>
   </Car>
   <Car SerialNumber="SN09">
     <BrandId>B13</BrandId>
-    <Model>Model9</Model>
+    <ModelId>M19</ModelId>
     <Price>3200</Price>
   </Car>
   <Car SerialNumber="SN10">
     <BrandId>B14</BrandId>
-    <Model>Model10</Model>
+    <ModelId>M20</ModelId>
     <Price>20000</Price>
   </Car>
 </Cars>
