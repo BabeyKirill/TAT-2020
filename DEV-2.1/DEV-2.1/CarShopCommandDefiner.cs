@@ -23,7 +23,7 @@ namespace DEV_2._1
 
             if (commandName == "add car")
             {
-                command = new AddCarCommand(this.Receiver);                
+                command = new AddCarFromConsoleCommand(this.Receiver);                
             }
             else if (commandName.IndexOf("remove car") == 0)
             {

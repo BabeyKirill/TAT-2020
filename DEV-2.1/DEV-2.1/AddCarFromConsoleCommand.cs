@@ -2,14 +2,14 @@
 
 namespace DEV_2._1
 {
-    class AddCarCommand : ICommand
+    class AddCarFromConsoleCommand : ICommand
     {
         private CarShop Shop;
 
         /// <summary>
         /// This Command asks to set a car and then add it in warehouse
         /// </summary>
-        public AddCarCommand(CarShop receiver)
+        public AddCarFromConsoleCommand(CarShop receiver)
         {
             this.Shop = receiver;
         }

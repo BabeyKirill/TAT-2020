@@ -3,6 +3,7 @@ using System.Xml.Serialization;
 
 namespace DEV_2._1
 {
+    [Serializable]
     public class SerializableBrand
     {
         [XmlAttribute]
