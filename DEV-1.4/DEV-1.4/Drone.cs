@@ -52,8 +52,8 @@ namespace DEV_1._4
 
             double distance = CurrentPosition.GetDistance(newPosition);
             double stopDistance = Speed * StopPeriod;
-            int NumberOfStops = (int)(distance / stopDistance);
-            double timeForTrip = distance / Speed + NumberOfStops * StopTime;
+            int numberOfStops = (int)(distance / stopDistance);
+            double timeForTrip = distance / Speed + numberOfStops * StopTime;
             return timeForTrip;
         }
     }

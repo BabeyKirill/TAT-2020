@@ -52,19 +52,19 @@ namespace DEV_1._4
             }
 
             double distance = CurrentPosition.GetDistance(newPosition);
-            double Speed = StartSpeed;
+            double speed = StartSpeed;
             int maxNumberOfAccelerations = (int)((MaxSpeed - StartSpeed) / Acceleration);
             int numberOfAccelerations = Math.Min((int)(distance / AccelerationDistance) - 1, maxNumberOfAccelerations);
             double timeForTrip = 0;
 
             for (int i = 1; i <= numberOfAccelerations; i++)
             {              
-                timeForTrip = timeForTrip + AccelerationDistance / Speed;
-                Speed = Speed + Acceleration;
+                timeForTrip = timeForTrip + AccelerationDistance / speed;
+                speed = speed + Acceleration;
             }
 
             distance = distance - numberOfAccelerations * AccelerationDistance;
-            return timeForTrip + distance / Speed;
+            return timeForTrip + distance / speed;
         }
     }
 }

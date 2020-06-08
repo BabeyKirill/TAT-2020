@@ -14,7 +14,7 @@ namespace DEV_1._4
         public Bird(Coordinates startPosition)
         {
             this.CurrentPosition = startPosition;
-            this.Speed = Randomizer.rnd.Next(MinSpeed, MaxSpeed + 1);
+            this.Speed = Randomizer.random.Next(MinSpeed, MaxSpeed + 1);
         }
 
         /// <summary>
