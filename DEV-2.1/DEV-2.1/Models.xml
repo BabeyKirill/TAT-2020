@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Models>
+  <Model Id="M11">
+    <BrandId>B11</BrandId>
+    <Name>Model1</Name>
+    <Transmission>Mechanical</Transmission>
+  </Model>
+  <Model Id="M12">
+    <BrandId>B11</BrandId>
+    <Name>Model2</Name>
+    <Transmission>Mechanical</Transmission>
+  </Model>
+  <Model Id="M13">
+    <BrandId>B12</BrandId>
+    <Name>Model3</Name>
+    <Transmission>Mechanical</Transmission>
+  </Model>
+  <Model Id="M14">
+    <BrandId>B12</BrandId>
+    <Name>Model4</Name>
+    <Transmission>Mechanical</Transmission>
+  </Model>
+  <Model Id="M15">
+    <BrandId>B13</BrandId>
+    <Name>Model5</Name>
+    <Transmission>Mechanical</Transmission>
+  </Model>
+  <Model Id="M16">
+    <BrandId>B11</BrandId>
+    <Name>Model6</Name>
+    <Transmission>Mechanical</Transmission>
+  </Model>
+  <Model Id="M17">
+    <BrandId>B11</BrandId>
+    <Name>Model7</Name>
+    <Transmission>Mechanical</Transmission>
+  </Model>
+  <Model Id="M18">
+    <BrandId>B12</BrandId>
+    <Name>Model8</Name>
+    <Transmission>Mechanical</Transmission>
+  </Model>
+  <Model Id="M19">
+    <BrandId>B13</BrandId>
+    <Name>Model9</Name>
+    <Transmission>Mechanical</Transmission>
+  </Model>
+  <Model Id="M20">
+    <BrandId>B14</BrandId>
+    <Name>Model10</Name>
+    <Transmission>Mechanical</Transmission>
+  </Model>
+</Models>
