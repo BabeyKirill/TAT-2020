@@ -43,24 +43,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddCarFromConsoleCommand.cs" />
-    <Compile Include="AveragePriceCommand.cs" />
-    <Compile Include="AveragePriceTypeCommand.cs" />
+    <Compile Include="Commands\AddCarFromConsoleCommand.cs" />
+    <Compile Include="Commands\AveragePriceCommand.cs" />
+    <Compile Include="Commands\AveragePriceTypeCommand.cs" />
     <Compile Include="CarShop.cs" />
     <Compile Include="CarShopCommandDefiner.cs" />
-    <Compile Include="CountTypesCommand.cs" />
+    <Compile Include="ConsoleInteractions.cs" />
+    <Compile Include="Commands\CountTypesCommand.cs" />
     <Compile Include="DatabaseManager.cs" />
-    <Compile Include="ICommand.cs" />
-    <Compile Include="CountAllCommand.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\CountAllCommand.cs" />
     <Compile Include="EntryPoint.cs" />
-    <Compile Include="Invoker.cs" />
+    <Compile Include="Commands\Invoker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RemoveCarCommand.cs" />
+    <Compile Include="Commands\RemoveCarCommand.cs" />
     <Compile Include="SerializableBrand.cs" />
     <Compile Include="SerializableCar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

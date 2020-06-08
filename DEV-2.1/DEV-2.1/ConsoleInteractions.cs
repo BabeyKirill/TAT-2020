@@ -2,30 +2,23 @@
 
 namespace DEV_2._1
 {
-    class AddCarFromConsoleCommand : ICommand
+    public class ConsoleInteractions
     {
-        private CarShop Shop;
-
         /// <summary>
-        /// This Command asks to set a car and then add it in warehouse
+        /// Creation of the SerializableCar object using Console
         /// </summary>
-        public AddCarFromConsoleCommand(CarShop receiver)
-        {
-            this.Shop = receiver;
-        }
-
-        public void Execute()
+        public static SerializableCar CreateCar()
         {
             Console.Write("Input serial number: ");
             string serialNumber = Console.ReadLine();
             Console.Write("Input brand Id: ");
             string brandId = Console.ReadLine();
             Console.Write("Input model Id: ");
-            string modelId = Console.ReadLine();            
+            string modelId = Console.ReadLine();
             Console.Write("Set price: ");
             Double.TryParse(Console.ReadLine(), out double price);
 
-            this.Shop.AddCarToWarehouse(new SerializableCar(serialNumber, brandId, modelId, price));
+            return new SerializableCar(serialNumber, brandId, modelId, price);
         }
     }
 }

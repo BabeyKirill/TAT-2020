@@ -8,8 +8,6 @@ namespace DEV_2._1
     class CarShop
     {
         private static CarShop Instance;
-        //private XDocument CarDatabase;
-        //private XDocument BrandsDatabase;
         private List<SerializableCar> CarDatabase;
         private List<SerializableBrand> BrandDatabase;
         private string CarsXmlFileName;
@@ -32,9 +30,6 @@ namespace DEV_2._1
             object objectForDeserializingBrands = new List<SerializableBrand>();
             DatabaseManager.XmlDeserialize(ref objectForDeserializingBrands, this.BrandsXmlFileName);
             BrandDatabase = (List<SerializableBrand>)objectForDeserializingBrands;
-
-            //this.CarDatabase = XDocument.Load($"../../{CarsXmlFileName}.xml");
-            //this.BrandsDatabase = XDocument.Load($"../../Brands.xml");
         }
 
         /// <summary>

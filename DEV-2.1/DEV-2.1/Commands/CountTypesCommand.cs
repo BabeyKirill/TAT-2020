@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DEV_2._1
+namespace DEV_2._1.Commands
 {    
     class CountTypesCommand : ICommand   
     {

@@ -1,4 +1,5 @@
 ﻿using System;
+using DEV_2._1.Commands;
 
 namespace DEV_2._1
 {
@@ -23,7 +24,7 @@ namespace DEV_2._1
 
             if (commandName == "add car")
             {
-                command = new AddCarFromConsoleCommand(this.Receiver);                
+                command = new AddCarFromConsoleCommand(this.Receiver, ConsoleInteractions.CreateCar());                
             }
             else if (commandName.IndexOf("remove car") == 0)
             {
