@@ -11,20 +11,17 @@ namespace DEV_2._3.PageObjects.MailRu
     {     
         private IWebDriver driver;
 
-        private WebDriverWait wait;
+        public IWebElement LoginBox => this.driver.FindElement(By.XPath("//input[@id='mailbox:login']"), 10, 20);
 
-        public IWebElement LoginBox => this.driver.FindElement(By.XPath("//input[@id='mailbox:login']"), 10);
+        public IWebElement LoginButton => this.driver.FindElement(By.XPath("//*[@id='mailbox:submit']"), 10, 20);
 
-        public IWebElement LoginButton => this.driver.FindElement(By.XPath("//*[@id='mailbox:submit']"), 10);
+        public IWebElement PasswordBox => this.driver.FindElement(By.XPath("//*[@id='mailbox:password']"), 10, 20);     
 
-        public IWebElement PasswordBox => this.driver.FindElement(By.XPath("//*[@id='mailbox:password']"), 10);     
-
-        public IWebElement LoginErrorMessage => this.driver.FindElement(By.XPath("//*[@id='mailbox:error']"), 10);
+        public IWebElement LoginErrorMessage => this.driver.FindElement(By.XPath("//*[@id='mailbox:error']"), 10, 20);
 
         public MailRuHomePage(IWebDriver driver)
         {
             this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 
         public InboxPage Login(string Login, string Password)
@@ -32,7 +29,7 @@ namespace DEV_2._3.PageObjects.MailRu
             this.LoginBox.SendKeys(Login);
             this.LoginButton.Click();
 
-            if (this.LoginErrorMessage.Displayed(500))
+            if (this.LoginErrorMessage.Displayed(500, 20))
             {
                 throw new MemberAccessException();
             }
@@ -40,7 +37,7 @@ namespace DEV_2._3.PageObjects.MailRu
             this.PasswordBox.SendKeys(Password);
             this.LoginButton.Click();
 
-            if (this.LoginErrorMessage.Displayed(500))
+            if (this.LoginErrorMessage.Displayed(500, 20))
             {
                 throw new MemberAccessException();
             }

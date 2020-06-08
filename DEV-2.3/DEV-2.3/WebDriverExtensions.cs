@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System;
+using System.Threading;
 
 namespace DEV_2._3
 {
@@ -8,10 +9,11 @@ namespace DEV_2._3
         /// <summary>
         /// Searching for the first IWebElement by specified search method 
         /// and specified maximum search time. Returns WebDriverTimeoutException if time runs out
+        /// if maximum wait time = 0 works as basic FindElement method
         /// </summary>
-        public static IWebElement FindElement(this IWebDriver driver, By by, int timeoutInSeconds)
+        public static IWebElement FindElement(this IWebDriver driver, By by, int timeoutInSeconds, int searchPeriodInMilliseconds)
         {
-            if (timeoutInSeconds <= 0)
+            if (timeoutInSeconds == 0)
             {
                 return driver.FindElement(by);
             }
@@ -24,7 +26,7 @@ namespace DEV_2._3
                 try
                 {
                     element = driver.FindElement(by);
-                    return element;                  
+                    return element;
                 }
                 catch (StaleElementReferenceException)
                 {
@@ -32,6 +34,8 @@ namespace DEV_2._3
                 catch (NoSuchElementException)
                 {
                 }
+
+                Thread.Sleep(searchPeriodInMilliseconds);
             }
 
             throw new WebDriverTimeoutException();
@@ -41,8 +45,8 @@ namespace DEV_2._3
         /// Searching for the first displayed IWebElement by specified search method 
         /// and specified maximum search time. Returns WebDriverTimeoutException if time runs out
         /// </summary>
-        public static IWebElement FindDisplayedElement(this IWebDriver driver, By by, int timeoutInSeconds)
-        {           
+        public static IWebElement FindDisplayedElement(this IWebDriver driver, By by, int timeoutInSeconds, int searchPeriodInMilliseconds)
+        {
             if (timeoutInSeconds <= 0)
             {
                 return driver.FindElement(by);
@@ -67,6 +71,8 @@ namespace DEV_2._3
                 catch (NoSuchElementException)
                 {
                 }
+
+                Thread.Sleep(searchPeriodInMilliseconds);
             }
 
             throw new WebDriverTimeoutException();
@@ -75,7 +81,7 @@ namespace DEV_2._3
         /// <summary>
         /// Return false if the IWebElement does not displayed within the specified time, else returns true
         /// </summary>
-        public static bool Displayed(this IWebElement element, int timeoutInMilliseconds)
+        public static bool Displayed(this IWebElement element, int timeoutInMilliseconds, int searchPeriodInMilliseconds)
         {
             if (timeoutInMilliseconds > 0)
             {
@@ -90,9 +96,11 @@ namespace DEV_2._3
                             return true;
                         }
                     }
-                    catch(StaleElementReferenceException)
+                    catch (StaleElementReferenceException)
                     {
                     }
+
+                    Thread.Sleep(searchPeriodInMilliseconds);
                 }
 
                 return false;

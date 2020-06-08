@@ -7,15 +7,15 @@ namespace DEV_2._3.PageObjects.MailRu
     {
         private IWebDriver driver;
 
-        public IWebElement NewMessageButton => this.driver.FindElement(By.XPath("//a[@title='Написать письмо']"), 10);
+        public IWebElement NewMessageButton => this.driver.FindElement(By.XPath("//a[@title='Написать письмо']"), 10, 20);
 
-        public IWebElement RecipientBox => this.driver.FindElement(By.XPath("//div[@data-type='to']/div/div/label/div/div/input"), 10);
+        public IWebElement RecipientBox => this.driver.FindElement(By.XPath("//div[@data-type='to']/div/div/label/div/div/input"), 10, 20);
 
-        public IWebElement MessageTextBox => this.driver.FindElement(By.XPath("//div[contains(@class,'editable-container')]/div"), 10);
+        public IWebElement MessageTextBox => this.driver.FindElement(By.XPath("//div[contains(@class,'editable-container')]/div"), 10, 20);
 
-        public IWebElement SendMessageButton => this.driver.FindElement(By.XPath("//span[@title='Отправить']/span"), 10);
+        public IWebElement SendMessageButton => this.driver.FindElement(By.XPath("//span[@title='Отправить']/span"), 10, 20);
 
-        public IWebElement OpenLastReceivedMessageButton => this.driver.FindElement(By.XPath("//a[@class='llc js-tooltip-direction_letter-bottom js-letter-list-item llc_normal'][1]"), 10);
+        public IWebElement OpenLastReceivedMessageButton => this.driver.FindElement(By.XPath("//a[@class='llc js-tooltip-direction_letter-bottom js-letter-list-item llc_normal'][1]"), 10, 20);
 
         public InboxPage(IWebDriver driver)
         {

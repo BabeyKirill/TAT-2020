@@ -6,13 +6,13 @@ namespace DEV_2._3.PageObjects.MailRu
     {
         private IWebDriver driver;
 
-        public IWebElement NickNameBox => this.driver.FindElement(By.XPath("//*[@id='nickname']"), 10);
+        public IWebElement NickNameBox => this.driver.FindElement(By.XPath("//*[@id='nickname']"), 10, 20);
 
-        public IWebElement SaveChangesButton => this.driver.FindElement(By.XPath("//button[@data-test-id='save-button']"), 10);
+        public IWebElement SaveChangesButton => this.driver.FindElement(By.XPath("//button[@data-test-id='save-button']"), 10, 20);
 
-        public IWebElement ShowProfileButton => this.driver.FindElement(By.XPath("//i[@id='PH_user-email']"), 10);
+        public IWebElement ShowProfileButton => this.driver.FindElement(By.XPath("//i[@id='PH_user-email']"), 10, 20);
 
-        public IWebElement PersonalDataButton => this.driver.FindElement(By.XPath("//div[@class='x-ph__menu__dropdown_auth__links']/a[2]"), 10);
+        public IWebElement PersonalDataButton => this.driver.FindElement(By.XPath("//div[@class='x-ph__menu__dropdown_auth__links']/a[2]"), 10, 20);
 
 
         public PersonalDataPage(IWebDriver driver)

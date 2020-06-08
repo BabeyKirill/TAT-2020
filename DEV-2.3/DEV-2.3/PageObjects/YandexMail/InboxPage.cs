@@ -6,11 +6,11 @@ namespace DEV_2._3.PageObjects.YandexMail
     {
         private IWebDriver driver;
 
-        public IWebElement OpenLastReceivedMessageButton => this.driver.FindElement(By.XPath("//div[@class='ns-view-container-desc mail-MessagesList js-messages-list']/div[1]"), 10);
+        public IWebElement OpenLastReceivedMessageButton => this.driver.FindElement(By.XPath("//div[@class='ns-view-container-desc mail-MessagesList js-messages-list']/div[1]"), 10, 20);
 
-        public IWebElement SenderOfLastMessage => this.driver.FindElement(By.XPath("//div[@class='ns-view-container-desc mail-MessagesList js-messages-list']/div[1]//span[@class='mail-MessageSnippet-FromText']"), 10);
+        public IWebElement SenderOfLastMessage => this.driver.FindElement(By.XPath("//div[@class='ns-view-container-desc mail-MessagesList js-messages-list']/div[1]//span[@class='mail-MessageSnippet-FromText']"), 10, 20);
 
-        public IWebElement ReadStateLabel => this.driver.FindElement(By.XPath("//span[@class='mail-MessageSnippet-Item mail-MessageSnippet-Item_body js-message-snippet-body']/span[1]"), 10);
+        public IWebElement ReadStateLabel => this.driver.FindElement(By.XPath("//span[@class='mail-MessageSnippet-Item mail-MessageSnippet-Item_body js-message-snippet-body']/span[1]"), 10, 20);
 
         public InboxPage(IWebDriver driver)
         {
